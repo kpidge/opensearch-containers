@@ -35,7 +35,12 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract base image version
-        run: echo "base_version=`grep -oE '\b[0-9]+\.[0-9]+\.[0-9]+$'`" >> $GITHUB_ENV
+        run: |
+          echo "base_version=`grep -oE '\b[0-9]+\.[0-9]+\.[0-9]+$'`" >> $GITHUB_ENV
+          
+      - name: Use base image version
+        run: |
+          echo "${{ env.base_version }}"
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
