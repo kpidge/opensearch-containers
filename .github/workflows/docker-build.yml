@@ -36,7 +36,7 @@ jobs:
 
       - name: Extract base image version
         run: |
-          echo "base_version=`grep -oE '\b[0-9]+\.[0-9]+\.[0-9]+$'`" >> $GITHUB_ENV
+          echo "base_version=`grep -oE '\b[0-9]+\.[0-9]+\.[0-9]+$' ${{ matrix.type }}/Dockerfile`" >> $GITHUB_ENV
           
       - name: Use base image version
         run: |
