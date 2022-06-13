@@ -34,13 +34,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Get the version of the base OpenSearch image used
       - name: Extract base image version
         run: |
           echo "base_version=`grep -oE '\b[0-9]+\.[0-9]+\.[0-9]+$' ${{ matrix.type }}/Dockerfile`" >> $GITHUB_ENV
-          
-      - name: Use base image version
-        run: |
-          echo "${{ env.base_version }}"
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
